@@ -14,12 +14,17 @@ namespace sqlWebApp.Pages
         //    _logger = logger;
         //}
 
+        private readonly IProductService _productService;
+        public IndexModel(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public List<Product>  Products { get; set; }
 
         public void OnGet()
         {
-            ProductService _service = new ProductService();
-            Products =_service.GetProducts();
+            Products = _productService.GetProducts();
         }
     }
 }
